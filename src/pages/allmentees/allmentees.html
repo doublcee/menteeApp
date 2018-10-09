@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Mentees</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding text-center>
+  <div *ngIf="mentees">
+    <ion-item-divider style="font-weight:bold; color:#525252" text-left *ngIf="mentees.length == 0" padding-left padding-right>
+      No Mentee at the moment
+    </ion-item-divider>
+    <ion-item-divider  text-left style="font-weight:bold; color:#525252" *ngIf="mentees.length !== 0">
+      {{ mentees.length}} {{ mentees.length <= 1 ? 'Mentee' : 'Mentees'}} found
+    </ion-item-divider>
+   <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+  </div>
+
+  <div *ngIf="mentees">
+    <ion-list>
+      <ion-item-sliding *ngFor="let mentee of mentees; let i = index" #itemSliding>
+        <button ion-item style="background:inherit !important"  (click)="seeDetails(mentee)">
+          <div item-left  *ngIf="mentee.photo == 'N/A'"><img src="assets/imgs/index2.jpeg" height="70px" width="70px"></div>
+          <div item-left *ngIf="mentee.photo !== 'N/A'"><img src="{{imageUrl}}{{mentee.photo}}" height="70px" width="70px"></div>
+          <h2 style="color:#81007F; padding-top:3px">{{mentee.fname}} {{mentee.lname}}</h2>
+          <p>{{ mentee.email }}</p>
+          <p>{{ mentee.phone }} {{ mentee.bann == 1 ? '(Suspended)': ''}}</p>
+        </button>
+        <ion-item-options>
+          <button ion-button color="save" *ngIf="mentee.bann == 0" icon-left (click)="onSuspend(mentee.id,i,itemSliding,mentee.fname+' '+mentee.lname)"><ion-icon name="close"></ion-icon> suspend</button>
+          <button *ngIf="mentee.bann == 1" ion-button color="save" icon-left (click)="onunSuspend(mentee.id,i,itemSliding, mentee.fname+' '+mentee.lname)"><ion-icon name="close"></ion-icon> unsuspend</button>
+          <button ion-button color="trash" icon-left (click)="onDelete(mentee.id,i,itemSliding,mentee.fname+' '+mentee.lname)"><ion-icon name="trash"></ion-icon>delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

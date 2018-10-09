@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Achievements</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <div *ngIf="achievements">
+        <ion-item-divider style="font-weight:bold">Leader Board</ion-item-divider>
+    </div>
+
+    <div padding *ngIf="achievements">
+        <div text-center padding style="font-weight:bold; color:#5b5b5b" *ngIf="achievements.length == 0">
+            No record found.
+        </div>
+        <div *ngIf="achievements.length !== 0">
+            <ion-row style="border-bottom:solid #81007F; font-weight:bold; color:darkred">
+                <ion-col col-6>Mentees</ion-col>
+                <ion-col col-3 style="text-align:center">Goals</ion-col>
+                <ion-col col-3 style="text-align:center">Points</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let achievement of achievements" style="border-bottom: dotted">
+                <ion-col col-6 style="font-weight:bold; background:#e3e3e3; color:#2f2f2f">{{ achievement.user.fname}} {{ achievement.user.lname}}</ion-col>
+                <ion-col col-3 style="text-align:center;background:#e3e3e3; color:#2f2f2f">{{achievement.achNum}}</ion-col>
+                <ion-col col-3 style="text-align:center;background:#e3e3e3; color:#2f2f2f">{{ achievement.achPoints}}</ion-col>
+            </ion-row>
+        </div>
+
+    </div>
+</ion-content>
+<ion-footer text-center class="footer">
+    Pursuit Of Purpose Network
+</ion-footer>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Add Goal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding-right>
+
+  <div padding-top>
+    <form #f="ngForm" (ngSubmit)="onAddGoal(f,userID)">
+      <ion-item>
+        <ion-label stacked>Start Date:</ion-label>
+        <ion-input type="text" name="startDate" ngModel required placeholder="e.g 2018-09-02"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>End Date</ion-label>
+        <ion-input type="text" name="endDate"  ngModel required  placeholder="e.g 2018-10-02"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Goal Description:</ion-label>
+        <ion-textarea rows="5" ngModel name="goalDesc" required></ion-textarea>
+      </ion-item>
+
+      <div padding-left padding-top padding-bottom>
+        <button ion-button block color="alternate" [disabled]="!f.valid">Add Goal</button>
+      </div>
+    </form>
+  </div>
+
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>
+

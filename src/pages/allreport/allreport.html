@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Reports</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="reports">
+    <div text-center padding style="font-weight:bold; color:#5b5b5b" *ngIf="reports.length == 0">
+      No reports at the moment.
+    </div>
+    <ion-item-divider style="color:#81007F; font-weight:bold" *ngIf="reports.length !== 0">
+      {{ reports.length }} {{ reports.length <= 1 ? 'report' : 'reports'}}
+    </ion-item-divider>
+  </div>
+
+    <div *ngIf="reports">
+      <ion-list>
+        <ion-item-sliding *ngFor="let report of reports; let i = index" #itemSliding>
+          <button icon-left ion-item style="background:inherit !important" (click)="onViewReport(report.repID,report.user)">
+            <ion-icon [name]="report.repStatus == 0 ? 'mail' : 'mail-open'" style="color:#81007F" item-left></ion-icon>
+            <h2 style="color:#81007F; padding-top:3px">{{ report.user.fname }} {{ report.user.lname }}</h2>
+            <p> {{ report.repBody }} </p>
+            <p>{{ report.repDate }}</p>
+          </button>
+          <ion-item-options>
+            <button ion-button color="alternate" icon-left (click)="deleteReport(report.repID,i,itemSliding)"><ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

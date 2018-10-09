@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button [navPush]="sentMessages">Sent Messages</button>
+    </ion-buttons>
+    <ion-title>Inbox</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="messages">
+    <div text-center padding style="font-weight:bold; color:#5b5b5b" *ngIf="messages.length == 0">
+      No messages at the moment.
+    </div>
+    <ion-item-divider style="color:#81007F; font-weight:bold" *ngIf="messages.length !== 0">
+      {{ messages.length }} {{ messages.length <= 1 ? 'Message' : 'Messages'}}
+    </ion-item-divider>
+  </div>
+
+  <div *ngIf="userType == 1">
+    <div *ngIf="messages">
+      <ion-list>
+        <ion-item-sliding *ngFor="let message of messages; let i = index" #itemSliding>
+          <button icon-left ion-item style="background:inherit !important" (click)="gotoMessage(message,message.inboxmsgs,message.msg_id)">
+            <ion-icon [name]="message.msg_status == false ? 'mail' : 'mail-open'" style="color:#81007F" item-left></ion-icon>
+            <h2 style="color:#81007F; padding-top:3px">{{ message.inboxmsgs.fname }} {{ message.inboxmsgs.lname }}</h2>
+            <p> {{ message.msg_body }} </p>
+            <p>{{ message.created_at }}</p>
+          </button>
+          <ion-item-options>
+            <button ion-button color="alternate" icon-left (click)="deleteMsg(message.msg_id, i, 1, itemSliding)"><ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+  <div *ngIf="userType == 2">
+    <div *ngIf="messages">
+      <ion-list>
+        <ion-item-sliding *ngFor="let message of messages; let i = index" #itemSliding>
+          <button icon-left ion-item style="background:inherit !important" (click)="gotoMessage(message,message.inboxmsgs,message.msg_id)">
+            <ion-icon [name]="message.msg_status == false ? 'mail' : 'mail-open'" style="color:#81007F" item-left></ion-icon>
+            <h2 style="color:#81007F; padding-top:3px">{{ message.inboxmsgs.user_type == 1 ? 'Mentor' : message.inboxmsgs.fname+" "+message.inboxmsgs.lname }}</h2>
+            <p> {{ message.msg_body }} </p>
+            <p>{{ message.created_at }}</p>
+          </button>
+          <ion-item-options>
+            <button ion-button color="alternate" icon-left (click)="deleteMsg(message.msg_id, i, 1, itemSliding)"><ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

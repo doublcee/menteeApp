@@ -14,3 +14,168 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+body, html{
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+}
+.ion-menu{
+  background: linear-gradient(to bottom, magenta, #81007F)
+}
+
+.homepage{
+  background:#81007F;
+}
+
+.profile-body{
+  background:linear-gradient(to bottom right, magenta, #81007F);
+  color:#fff;
+}
+
+.home-carrier{
+  height:inherit !important;
+}
+
+.butt{
+  background: pink;
+}
+
+.part1{
+height: 50% !important;
+}
+
+.part2{
+  height:50% !important;
+}
+
+.ion-item{
+  color:#fff;
+  background:linear-gradient(#81007F, magenta, #81007F);
+ // border-top:none;
+  font-weight:bold
+
+}
+
+.toplogindiv{
+  height:20%;
+  background:#ccc;
+}
+
+.fdiv{
+  height:30%;
+  width:50%;
+  background: url(../assets/imgs/applogo.jpg) no-repeat;
+  background-size: 100% 100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.ldiv{
+  height:65%
+}
+
+.buttlogin1{
+  color:#fff !important;
+}
+
+.buttlogin2{
+  color:#fff!important;
+}
+
+
+.topform{
+  padding-top:15px
+}
+
+.member{
+  margin-top:2px !important;
+}
+
+.profilediv{
+  color:red !important
+}
+.community{
+  background: #fff !important;
+}
+.message-body{
+  height:90%;
+  padding: 5px;
+}
+
+.bodydashboard{
+  background: #e1e1e1;
+}
+
+.message-input{
+  height:10%;
+  background:#81007F;
+}
+
+.message-content{
+  height:100%;
+}
+
+.scroll{
+  width:100%;
+  height:100%;
+}
+
+
+
+.ios {
+  page-community, page-messagementee, page-smscomentee, page-messagementor {
+    form {
+      ion-input::placeholder {
+        color: #2f2f2f !important;
+        font-size: 1em;
+        opacity: 0.9;
+        text-indent: 7px !important;
+      }
+      ion-input {
+        margin-top: 7px;
+        height: 80%;
+        text-indent: 7px !important;
+        color: #2f2f2f;
+        background: #e1e1e1;
+        border-radius: 10px;
+      }
+    }
+  }
+
+}
+
+  .container.content.content-md > div:nth-child(1){
+    display: none !important;
+    opacity:0 !important;
+    visibility: hidden !important;
+    margin:0 !important;
+  }
+
+ /* .container.content.content-md > .scroll-content {
+    float: left !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    .holder {
+      div:nth-last-child(1) {
+        margin-bottom: 10px;
+      }
+    }
+
+    */
+
+  .popover-md .popover-content{
+    top: 12px !important;
+    left: 180px !important;
+    transform-origin: right top 0px !important;
+    transform: scale(1) !important;
+    width: 50% !important;
+    }
+
+.popover-md .popover-content{
+  top: 12px !important;
+  left: 135px !important;
+  transform-origin: right top 0px;
+  transform: scale(1);
+  width: 57% !important;
+}

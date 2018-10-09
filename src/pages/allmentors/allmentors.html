@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Mentors</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content text-center>
+  <div *ngIf="mentors">
+    <ion-item-divider style="font-weight:bold; color:#525252" text-center *ngIf="mentors.length == 0" padding-left padding-right>
+      No Mentor at the moment
+    </ion-item-divider>
+    <ion-item-divider style="font-weight:bold; color:#525252" text-left *ngIf="mentors.length !== 0">
+      {{ mentors.length > 1 ? 'Mentors' : 'Mentor'}}
+    </ion-item-divider>
+    <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+  </div>
+  <div *ngIf="mentors" padding-left padding-right>
+    <ion-list>
+      <ion-item-sliding *ngFor="let mentor of mentors; let i = index" #itemSliding>
+        <button ion-item style="background:inherit !important" (click)="seeDetails(mentor)">
+          <div item-left  *ngIf="mentor.photo == 'N/A'"><img src="assets/imgs/index2.jpeg" height="70px" width="70px"></div>
+          <div item-left *ngIf="mentor.photo !== 'N/A'"><img src="{{imageUrl}}{{mentor.photo}}" height="70px" width="70px"></div>
+          <h2 style="color:#81007F; padding-top:3px">{{mentor.fname}} {{mentor.lname}}</h2>
+          <p>{{ mentor.email }}</p>
+          <p>{{ mentor.phone }} {{ mentor.bann == 1 ? '(Suspended)': ''}}</p>
+        </button>
+        <ion-item-options>
+          <button *ngIf="mentor.bann == 0" ion-button color="save" icon-left (click)="onSuspend(mentor.id,i,itemSliding,mentor.fname+' '+mentor.lname)"><ion-icon name="close"></ion-icon> suspend</button>
+          <button *ngIf="mentor.bann == 1" ion-button color="save" icon-left (click)="onunSuspend(mentor.id,i,itemSliding,mentor.fname+' '+mentor.lname)"><ion-icon name="close"></ion-icon> unsuspend</button>
+          <button ion-button color="trash" icon-left (click)="onDelete(mentor.id,i,itemSliding,mentor.fname+' '+mentor.lname)"><ion-icon name="trash"></ion-icon>delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

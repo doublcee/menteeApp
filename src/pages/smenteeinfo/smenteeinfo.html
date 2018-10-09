@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button (click)="onClose()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Mentee</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div *ngIf="mentee && mentee.length !== 0">
+    <ion-item text-center>
+      <img src="assets/imgs/index2.jpeg" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentee.photo == 'N/A'">
+      <img (click)="onView(mentee.photo)" src="{{imageUrl}}{{mentee.photo}}" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentee.photo !== 'N/A'">
+    </ion-item>
+    <div padding-left padding-right>
+      <ion-item no-lines>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Name:</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>{{ mentee.fname }} {{ mentee.lname }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Email:</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>{{ mentee.email }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Gender:</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>{{ mentee.gender }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Interest:</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>{{ mentee.careerfield }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Phone:</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>{{ mentee.phone }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <p style="font-weight:bold">Role</p>
+            </ion-col>
+            <ion-col col-8>
+              <p>Mentee</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+
+    <ion-item-divider>MENTOR</ion-item-divider>
+    <div padding>
+      <div *ngIf="mentor">
+        <div *ngIf="!hasmentor" text-center padding-left padding-right style="color:#525252">No mentor at the moment.</div>
+        <button ion-item style="background:inherit !important"  (click)="onMentor(mentor)" *ngIf="hasmentor">
+          <div item-left  *ngIf="mentor.photo == 'N/A'"><img src="assets/imgs/index2.jpeg" height="=50px" width="50px"></div>
+          <div item-left *ngIf="mentor.photo !== 'N/A'"><img src="{{imageUrl}}{{mentor.photo}}" height="50px" width="50px"></div>
+          <h2 style="padding-top:3px; color:#81007F">{{mentor.fname}} {{mentor.lname}}</h2>
+          <p>{{ mentor.email }}</p>
+          <p>{{ mentor.phone }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

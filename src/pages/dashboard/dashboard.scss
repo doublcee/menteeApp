@@ -1,0 +1,21 @@
+page-dashboard {
+  .dashheader{
+    height: 100px;
+    background: linear-gradient(to right, magenta, #81007F);
+  }
+  .dashtabs{
+    width:100%; height:100px; background:linear-gradient(to bottom right, magenta, #81007F);
+  }
+
+  .footer{
+    background: #af00ad;
+    color:#fff !important;
+    font-weight:bold;
+    font-style:italic;
+  }
+
+  body{
+    background-color: #e3e3e3;
+    font-family:  Verdana;
+  }
+}

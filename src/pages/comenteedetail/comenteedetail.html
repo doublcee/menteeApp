@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event, 'comentee', mentee)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Mentee Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-item text-center>
+      <img src="assets/imgs/index2.jpeg" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentee.photo == 'N/A'">
+      <img (click)="onView(mentee.photo)" src="{{imageUrl}}{{mentee.photo}}" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentee.photo !== 'N/A'">
+    </ion-item>
+    <ion-grid padding-left>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Name:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ mentee.fname }} {{ mentee.lname }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Email:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ mentee.email }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Phone:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ mentee.phone }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Gender:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ mentee.gender }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Interest:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ mentee.careerfield }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+        <ion-col col-6>
+          <span style="font-weight:bold">Role:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>Mentee</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow" *ngIf="mentee.bann == 1">
+        <ion-col col-6>
+          <span style="font-weight:bold">Status:</span>
+        </ion-col>
+        <ion-col col-6>
+          <span>Suspended</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <ion-fab bottom right>
+      <button ion-fab mini color="fab" (click)="messageMentee(mentee)"><ion-icon name="mail"></ion-icon></button>
+    </ion-fab>
+  </div>
+
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

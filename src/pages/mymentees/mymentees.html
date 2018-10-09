@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>My Mentees</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+  <div *ngIf="mentees">
+   <div text-center padding style="font-style:italic; font-weight:bold; color:#5b5b5b" *ngIf="mentees.length == 0">You have no mentee</div>
+    <ion-item-divider  text-left style="font-weight:bold; color:#81007F" *ngIf="mentees.length !== 0">
+    {{ mentees.length}} {{ mentees.length <= 1 ? 'Mentee' : 'Mentees'}}
+    </ion-item-divider>
+  </div>
+
+    <div *ngIf="mentees">
+      <button ion-item style="background:inherit !important" *ngFor="let mentee of mentees; let i = index" (click)="seeDetails(mentee.user)">
+        <div item-left  *ngIf="mentee.user.photo == 'N/A'"><img src="assets/imgs/index2.jpeg" height="70px" width="70px"></div>
+        <div item-left *ngIf="mentee.user.photo !== 'N/A'"><img src="{{imageUrl}}{{mentee.user.photo}}" height="70px" width="70px"></div>
+        <h2 style="color:#81007F; padding-top:3px">{{mentee.user.fname}} {{mentee.user.lname}}</h2>
+        <p>{{ mentee.user.email }}</p>
+        <p>{{ mentee.user.phone }}</p>
+        <p *ngIf="mentee.user.bann == 1">(Suspended)</p>
+      </button>
+    </div>
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

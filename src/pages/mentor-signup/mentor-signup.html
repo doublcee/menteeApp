@@ -1,0 +1,160 @@
+<ion-header>
+  <ion-navbar color="alternate">
+      <ion-buttons end>
+          <button ion-button [navPush]="loginPage">Sign-in</button>
+      </ion-buttons>
+    <ion-title>Mentor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="mypage">
+        <div class="top" padding-right>
+            <form #f="ngForm" novalidate (ngSubmit)="signup(f,type)" [formGroup]="signupForm">
+                    <ion-item>
+                        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Title</ion-label>
+                        <ion-input type="text" [(ngModel)]="userData.title" formControlName="title"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('title').hasError('minlength') || signupForm.get('title').hasError('maxlength') ||signupForm.get('title').hasError('pattern') ||signupForm.get('title').hasError('required') ) && signupForm.get('title').touched">
+                        <div class="error" *ngIf="signupForm.get('title').hasError('required') && signupForm.get('title').touched">
+                            <small style="font-style:italic">input your title</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('title').hasError('minlength') && signupForm.get('title').touched">
+                            <small style="font-style:italic">Minimum 2 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('title').hasError('maxlength') && signupForm.get('title').touched">
+                            <small style="font-style:italic">Maximum 10 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('title').hasError('pattern') && signupForm.get('title').touched">
+                            <small style="font-style:italic">Just use alphabet characters</small>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> First name</ion-label>
+                        <ion-input type="text" [(ngModel)]="userData.fname" formControlName="fname"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('fname').hasError('minlength') || signupForm.get('fname').hasError('maxlength') ||signupForm.get('fname').hasError('pattern') ||signupForm.get('fname').hasError('required') ) && signupForm.get('fname').touched">
+                        <div class="error" *ngIf="signupForm.get('fname').hasError('required') && signupForm.get('fname').touched">
+                            <small style="font-style:italic">input your first name</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('fname').hasError('minlength') && signupForm.get('fname').touched">
+                            <small style="font-style:italic">Minimum 4 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('fname').hasError('maxlength') && signupForm.get('fname').touched">
+                            <small style="font-style:italic">Maximum 12 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('fname').hasError('pattern') && signupForm.get('fname').touched">
+                            <small style="font-style:italic">Just use alphabet characters</small>
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Last name</ion-label>
+                        <ion-input type="text" [(ngModel)]="userData.lname"  formControlName="lname"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('lname').hasError('minlength') || signupForm.get('lname').hasError('maxlength') ||signupForm.get('lname').hasError('pattern') ||signupForm.get('lname').hasError('required') ) && signupForm.get('lname').touched">
+                        <div class="error" *ngIf="signupForm.get('lname').hasError('required') && signupForm.get('lname').touched">
+                            <small style="font-style:italic">input your last name</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('lname').hasError('minlength') && signupForm.get('lname').touched">
+                            <small style="font-style:italic">Minimum 4 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('lname').hasError('maxlength') && signupForm.get('lname').touched">
+                            <small style="font-style:italic">Maximum 12 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('lname').hasError('pattern') && signupForm.get('lname').touched">
+                            <small style="font-style:italic">Just use alphabet characters</small>
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating><ion-icon name="key" class="icon-ion"></ion-icon> Password</ion-label>
+                        <ion-input type="password" [(ngModel)]="userData.password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('password').hasError('minlength') || signupForm.get('password').hasError('maxlength') ||signupForm.get('password').hasError('pattern') ||signupForm.get('password').hasError('required') ) && signupForm.get('password').touched">
+                        <div class="error" *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched">
+                            <small style="font-style:italic">input your password</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('password').hasError('minlength') && signupForm.get('password').touched">
+                            <small style="font-style:italic">Minimum 6 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('password').hasError('maxlength') && signupForm.get('password').touched">
+                            <small style="font-style:italic">Maximum 12 characters</small>
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating><ion-icon name="mail" class="icon-ion"></ion-icon> Email</ion-label>
+                        <ion-input type="email" [(ngModel)]="userData.email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('email').hasError('pattern') ||signupForm.get('email').hasError('required') ) && signupForm.get('email').touched">
+                        <div class="error" *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">
+                            <small style="font-style:italic">input your email</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('email').hasError('pattern') && signupForm.get('email').touched">
+                            <small style="font-style:italic">Just use valid email format</small>
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating><ion-icon name="contacts" class="icon-ion"></ion-icon> Gender</ion-label>
+                        <ion-select formControlName="gender" [(ngModel)]="userData.gender">
+                            <ion-option value="Male">Male</ion-option>
+                            <ion-option value="Female">Female</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('gender').hasError('required') ) && signupForm.get('gender').touched">
+                        <div class="error" *ngIf="signupForm.get('gender').hasError('required') && signupForm.get('gender').touched">
+                            <small style="font-style:italic">select gender</small>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating><ion-icon name="body" class="icon-ion"></ion-icon> Career field</ion-label>
+                        <ion-select formControlName="careerfield" [(ngModel)]="userData.careerfield">
+                            <ion-option value="Architecture">Architecture</ion-option>
+                            <ion-option value="Arts">Arts</ion-option>
+                            <ion-option value="Agriculture">Agriculture</ion-option>
+                            <ion-option value="Business Management">Business Management</ion-option>
+                            <ion-option value="Career Planning">Career Planning</ion-option>
+                            <ion-option value="Architecture">Education</ion-option>
+                            <ion-option value="Engineering">Engineering</ion-option>
+                            <ion-option value="Finance">Finance</ion-option>
+                            <ion-option value="ICT">ICT</ion-option>
+                            <ion-option value="Law">Law</ion-option>
+                            <ion-option value="Logistics">Logistics</ion-option>
+                            <ion-option value="Medicine">Medicine</ion-option>
+                            <ion-option value="Networking">Networking</ion-option>
+                            <ion-option value="Problem Solving">Problem Solving</ion-option>
+                            <ion-option value="Public Administration">Public Administration</ion-option>
+                            <ion-option value="Skill Development">Skill Development</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item no-lines *ngIf="(signupForm.get('careerfield').hasError('required') ) && signupForm.get('careerfield').touched">
+                        <div class="error" *ngIf="signupForm.get('careerfield').hasError('required') && signupForm.get('careerfield').touched">
+                            <small style="font-style:italic">select career field</small>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating><ion-icon name="call" class="icon-ion"></ion-icon> Phone</ion-label>
+                        <ion-input type="text" [(ngModel)]="userData.phone" formControlName="phone"></ion-input>
+                    </ion-item>
+                    <ion-item no-lines *ngIf="(signupForm.get('phone').hasError('minlength') || signupForm.get('phone').hasError('maxlength') ||signupForm.get('phone').hasError('pattern') ||signupForm.get('phone').hasError('required') ) && signupForm.get('phone').touched">
+                        <div class="error" *ngIf="signupForm.get('phone').hasError('required') && signupForm.get('phone').touched">
+                            <small style="font-style:italic">input your phone</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('phone').hasError('minlength') && signupForm.get('phone').touched">
+                            <small style="font-style:italic">Minimum 11 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('phone').hasError('maxlength') && signupForm.get('lname').touched">
+                            <small style="font-style:italic">Maximum 11 characters</small>
+                        </div>
+                        <div class="error" *ngIf="signupForm.get('phone').hasError('pattern') && signupForm.get('phone').touched">
+                            <small style="font-style:italic">Just use numeric characters</small>
+                        </div>
+                    </ion-item>
+                <div padding-left padding-top padding-bottom>
+                    <button type="submit" block ion-button color="primary" [disabled]="signupForm.invalid">Signup</button>
+                </div>
+            </form>
+        </div>
+</ion-content>

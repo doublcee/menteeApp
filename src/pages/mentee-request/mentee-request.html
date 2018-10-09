@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Requests</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-center class="body">
+  <div *ngIf="requestinfo">
+    <div text-center padding style="font-style:italic;font-weight:bold; color:#5b5b5b" *ngIf="requestinfo.length == 0">No requests at the moment</div>
+    <ion-item-divider style="color:#5b5b5b; font-weight:bold" text-left *ngIf="requestinfo.length !== 0">
+      {{ requestinfo.length }} {{ requestinfo.length <= 1 ? 'Request' : 'Requests'}} Found
+    </ion-item-divider>
+  </div>
+
+  <div *ngIf="requestinfo">
+    <ion-card *ngFor="let request of requestinfo; let i = index">
+      <ion-card-header style="font-weight:bold">{{ request.user.fname}} {{ request.user.lname }}</ion-card-header>
+      <ion-card-content>
+        <p> <button ion-button small clear color="alternate" (click)="seeDetails(request.user)">View Profile</button></p>
+        <button ion-button small color="secondary" text-center color="secondary" (click)="acceptRequest(request.req_id,i)">Accept</button>
+        <button ion-button small  color="secondary" color="danger"  text-center (click)="deleteRequest(request.req_id,i)">Decline</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>
+

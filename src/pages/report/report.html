@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Report</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding-right class="body">
+    <div padding-top>
+        <form #f="ngForm" (ngSubmit)="onReport(f,user.id)">
+            <ion-item>
+                <ion-label stacked>Reporting:</ion-label>
+                <ion-input type="text" required value="{{ user.fname+' '+user.lname }}" readonly></ion-input>
+            </ion-item>
+
+            <ion-item class="itemion">
+                <ion-label floating>choose a reason</ion-label>
+                <ion-select name="reason" ngModel required>
+                    <ion-option value="Abuse">Abuse</ion-option>
+                    <ion-option value="Annoying">Annoying</ion-option>
+                    <ion-option value="Threatening">Threatening</ion-option>
+                    <ion-option value="Incapability">Incapability</ion-option>
+                    <ion-option value="Scamming">Scamming</ion-option>
+                    <ion-option value="Spamming">Spamming</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Your report:</ion-label>
+                <ion-textarea rows="5" name="body" ngModel required></ion-textarea>
+            </ion-item>
+
+            <div padding-top padding-left padding-bottom>
+                <button ion-button block color="alternate" [disabled]="!f.valid">REPORT</button>
+            </div>
+        </form>
+
+    </div>
+
+   <!--- <div class="rhalf1">
+      <h5 style="color:#525252">Report: <span style="font-weight:bold">{{ user.user_type == 1 ? 'Mentor' : user.fname+' '+user.lname }}  </span> </h5>
+    </div>
+    <div class="rhalf2">
+      <form class="itemion" #f="ngForm" (ngSubmit)="onReport(f,user.id)">
+          <ion-item class="itemion" padding-left padding-right>
+            <ion-label floating>choose a reason</ion-label>
+            <ion-select name="reason" ngModel required>
+              <ion-option value="Abuse">Abuse</ion-option>
+              <ion-option value="Annoying">Annoying</ion-option>
+              <ion-option value="Threatening">Threatening</ion-option>
+                <ion-option value="Incapability">Incapability</ion-option>
+              <ion-option value="Scamming">Scamming</ion-option>
+                <ion-option value="Spamming">Spamming</ion-option>
+            </ion-select>
+          </ion-item>
+            <ion-item class="itemion" padding-left padding-right>
+                <ion-label floating>Your report</ion-label>
+              <ion-textarea name="body" ngModel required rows="6">Hello</ion-textarea>
+            </ion-item>
+            <div padding>
+              <button type="submit" ion-button block [disabled]="!f.valid">Report</button>
+            </div>
+      </form>
+    </div>-->
+
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

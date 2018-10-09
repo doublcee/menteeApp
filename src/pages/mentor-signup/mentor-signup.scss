@@ -1,0 +1,73 @@
+page-mentor-signup {
+  .regForm{
+    background:inherit !important;
+  }
+
+  .keyboard-up{
+    height: auto !important;
+  }
+
+
+  .top{
+    background:inherit !important;
+  }
+
+  .error{
+    background:inherit !important;
+  }
+
+  .mypage{
+    background: url(../assets/imgs/back.png) no-repeat;
+    background-size: 100% 100%;
+    height:100% !important;
+  }
+
+  input::placeholder {
+    color: #fff !important;
+    font-size: 1em;
+    opacity: 0.9
+  }
+
+  ion-option{
+    color:#fff !important
+  }
+  ion-label{
+    color: #fff !important;
+    font-size: 1em;
+    font-weight:bold;
+  }
+  ion-input[type=text]{
+    color:#fff;
+    font-weight: 400;
+  }
+
+  ion-input[type=password]{
+    color:#fff;
+    font-weight: 400;
+  }
+
+  ion-input[type=email]{
+    color:#fff;
+    font-weight: 400;
+  }
+
+  ion-select{
+    color:#fff ;
+    font-weight: 400;
+    font-size: 1em;
+  }
+  .icon-ion{
+    color: magenta;
+  }
+
+  ion-item{
+    background: inherit !important;
+  }
+  ion-input{
+    background: inherit !important;
+  }
+
+  .select-icon-inner{
+    color:#fff !important;
+  }
+}

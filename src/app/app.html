@@ -1,1 +1,53 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="nav" class="ion-menu" swipeEnabled="false" side="right">
+    <ion-header>
+        <ion-toolbar color="alternate">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-menu">
+        <ion-list>
+            <button ion-item class="ion-item" icon-left (click)="onprofile()">
+                <ion-icon name="person" style="padding-top:3px !important;"></ion-icon>
+                PROFILE</button>
+
+            <button ion-item class="ion-item" icon-left (click)="onMentee()" *ngIf="userType == 1">
+                <ion-icon name="people" style="padding-top:3px !important;"></ion-icon>
+                MY MENTEES</button>
+            <button ion-item class="ion-item" icon-left (click)="onCoMentee()" *ngIf="userType == 2 && mentorID">
+                <ion-icon name="people" style="padding-top:3px !important;"></ion-icon>
+                CO MENTEES</button>
+
+            <button ion-item icon-left class="ion-item" (click)="ongoals()" *ngIf="userType == 2">
+                <ion-icon name="star" style="padding-top:3px !important;"></ion-icon>
+                MY GOALS</button>
+
+            <button ion-item icon-left class="ion-item"  (click)="onschedule()" *ngIf="userType == 2">
+                <ion-icon name="calendar" style="padding-top:3px !important;"></ion-icon>
+                SCHEDULE
+            </button>
+
+            <button ion-item icon-left class="ion-item" (click)="onAchievement()">
+                <ion-icon name="log-in" style="padding-top:3px !important;"></ion-icon>
+                ACHIEVEMENTS
+            </button>
+
+            <button ion-item icon-left class="ion-item" (click)="onRules()">
+                <ion-icon name="log-in" style="padding-top:3px !important;"></ion-icon>
+                RULES
+            </button>
+
+            <button ion-item icon-left class="ion-item" (click)="onGoalRequest()" *ngIf="admin == 1">
+                <ion-icon name="folder" style="padding-top:3px !important;"></ion-icon>
+                GOAL REQUESTS
+            </button>
+
+            <button ion-item icon-left class="ion-item" (click)="logout()" no-lines>
+                <ion-icon name="log-out" style="padding-top:3px !important;"></ion-icon>
+                LOGOUT
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #nav></ion-nav>

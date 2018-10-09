@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>
+      Image upload
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="{{pathForImage(lastImage)}}" style="max-width:100%; max-height:100% " [hidden]="lastImage === null">
+  <h4 [hidden]="lastImage !== null" style="color:#2f2f2f">Please Select Image!</h4>
+  <small [hidden]="lastImage !== null" style="color:#2f2f2f">Maximum image upload size: 2MB</small>
+  <div id="imageclass"></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="alternate">
+    <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Select Image
+      </button>
+      <button ion-button icon-left (click)="uploadImage(userID)" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon> Upload
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Mentor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  style="background: #d1d1d1; color:#81007F" class="container">
+  <div *ngIf="messages && messages.length !== 0">
+    <div *ngFor="let message of messages">
+      <div class="sender">
+        <div class="message">
+          <span style="font-weight:bold">{{ message.body }}</span><br/>
+          <span><small>Sent | {{ message.date }} </small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="footer" text-center>
+  <form #f="ngForm" class="form" (ngSubmit)="onSend(f,mentor.id)">
+    <ion-row>
+      <ion-col col-10>
+        <ion-input type="text" name="msg_body" ngModel required placeholder="your message"></ion-input>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button color="primary" icon-only block [disabled]="!f.valid">
+          <ion-icon name="send"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-footer>
+

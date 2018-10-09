@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="userinfo && userinfo.length !== 0">
+    <ion-item text-center>
+      <img src="assets/imgs/index2.jpeg" height="100px" width="100px" style="border-radius: 20px" *ngIf="userinfo.photo == 'N/A'">
+      <img (click)="onView(userinfo.photo)" src="{{imageUrl}}{{userinfo.photo}}" alt="my photo" height="100px" width="100px" style="border-radius: 20px" *ngIf="userinfo.photo !== 'N/A'">
+      <button ion-button icon-left (click)="imageUpload()" small clear>
+        <ion-icon name="camera"></ion-icon> Photo
+      </button>
+    </ion-item>
+      <ion-grid padding-left>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Name:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.fname }} {{ userinfo.lname }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Email:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.email }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Password:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.cpassword }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Phone:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.phone }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Gender:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.gender }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">{{ userinfo.user_type == 1 ? 'Interest' : userinfo.user_type == 2 ? 'Career' : 'Position'}}:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.user_type == 3 ? 'Administrator' : userinfo.careerfield }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Role</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ userinfo.user_type == 2 ? 'Mentee' : userinfo.user_type == 3 ? 'Network Admin' : 'Mentor' }}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+  <div>
+    <ion-fab bottom right *ngIf="userinfo.length !== 0">
+      <button ion-fab mini color="fab"  [navPush]="editProfilePage"><ion-icon name="create"></ion-icon></button>
+    </ion-fab>
+  </div>
+
+</ion-content>
+
+<ion-footer class="footer" text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

@@ -1,3 +1,33 @@
 page-home {
+  .menteeButt{
+    color: #81007F;
+  }
+
+  .mentorButt{
+    color: #fff;
+    background: linear-gradient(to right, magenta, #81007F);
+  }
+
+  .fhalf{
+    height:50% !important;
+    position:relative !important;
+    top:0;
+    margin:0;
+    background: url(../assets/imgs/applogo.jpg) no-repeat;
+    background-size: 100% 100%;
+    color:#fff;
+  }
+
+  .shalf{
+    height:50% !important;
+    position:relative !important;
+    top:0;
+    margin:0;
+    background: #c1c1c1;
+  }
+
+  .part1{
+    height: 100% !important;
+  }
 
 }

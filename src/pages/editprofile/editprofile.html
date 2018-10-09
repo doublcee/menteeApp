@@ -1,0 +1,303 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Edit profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div padding-right>
+<div class="mentor" *ngIf="userinfo.user_type == 1">
+  <form #f="ngForm" (ngSubmit)="onUpdate(f,userinfo.id)" [formGroup]="mentorForm">
+    <ion-item>
+      <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Title</ion-label>
+      <ion-input type="text"  [(ngModel)]="userinfo.title" formControlName="title" required placeholder=""></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('title').hasError('minlength') || mentorForm.get('title').hasError('maxlength') ||mentorForm.get('title').hasError('pattern') ||mentorForm.get('title').hasError('required') ) && mentorForm.get('title').touched">
+      <div class="error" *ngIf="mentorForm.get('title').hasError('required') && mentorForm.get('title').touched">
+        <small style="font-style:italic; color:black">input your title</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('title').hasError('minlength') && mentorForm.get('title').touched">
+        <small style="font-style:italic; color:black">Minimum 2 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('title').hasError('maxlength') && mentorForm.get('title').touched">
+        <small style="font-style:italic; color:black">Maximum 10 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('title').hasError('pattern') && mentorForm.get('title').touched">
+        <small style="font-style:italic; color:black">Just use alphabet characters</small>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> First name</ion-label>
+      <ion-input type="text" [(ngModel)]="userinfo.fname" formControlName="fname" placeholder="" required></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('fname').hasError('minlength') || mentorForm.get('fname').hasError('maxlength') ||mentorForm.get('fname').hasError('pattern') ||mentorForm.get('fname').hasError('required') ) && mentorForm.get('fname').touched">
+      <div class="error" *ngIf="mentorForm.get('fname').hasError('required') && mentorForm.get('fname').touched">
+        <small style="font-style:italic; color:black">input your first name</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('fname').hasError('minlength') && mentorForm.get('fname').touched">
+        <small style="font-style:italic; color:black">Minimum 4 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('fname').hasError('maxlength') && mentorForm.get('fname').touched">
+        <small style="font-style:italic; color:black">Maximum 12 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('fname').hasError('pattern') && mentorForm.get('fname').touched">
+        <small style="font-style:italic; color:black">Just use alphabet characters</small>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Last name</ion-label>
+      <ion-input type="text" [(ngModel)]="userinfo.lname" formControlName="lname" placeholder="" required></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('lname').hasError('minlength') || mentorForm.get('lname').hasError('maxlength') ||mentorForm.get('lname').hasError('pattern') ||mentorForm.get('lname').hasError('required') ) && mentorForm.get('lname').touched">
+      <div class="error" *ngIf="mentorForm.get('lname').hasError('required') && mentorForm.get('lname').touched">
+        <small style="font-style:italic; color:black">input your last name</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('lname').hasError('minlength') && mentorForm.get('lname').touched">
+        <small style="font-style:italic; color:black">Minimum 4 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('lname').hasError('maxlength') && mentorForm.get('lname').touched">
+        <small style="font-style:italic; color:black">Maximum 12 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('lname').hasError('pattern') && mentorForm.get('lname').touched">
+        <small style="font-style:italic; color:black">Just use alphabet characters</small>
+      </div>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label floating><ion-icon name="key" class="icon-ion"></ion-icon> Password</ion-label>
+      <ion-input type="text" [(ngModel)]="userinfo.cpassword" formControlName="password" required></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('password').hasError('minlength') || mentorForm.get('password').hasError('maxlength') ||mentorForm.get('password').hasError('pattern') ||mentorForm.get('password').hasError('required') ) && mentorForm.get('password').touched">
+      <div class="error" *ngIf="mentorForm.get('password').hasError('required') && mentorForm.get('password').touched">
+        <small style="font-style:italic; color:black">input your password</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('password').hasError('minlength') && mentorForm.get('password').touched">
+        <small style="font-style:italic; color:black">Minimum 6 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('password').hasError('maxlength') && mentorForm.get('password').touched">
+        <small style="font-style:italic; color:black">Maximum 12 characters</small>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="mail" class="icon-ion"></ion-icon> Email</ion-label>
+      <ion-input type="email" [(ngModel)]="userinfo.email"  readonly formControlName="email" required></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('email').hasError('pattern') ||mentorForm.get('email').hasError('required') ) && mentorForm.get('email').touched">
+      <div class="error" *ngIf="mentorForm.get('email').hasError('required') && mentorForm.get('email').touched">
+        <small style="font-style:italic; color:black">input your email</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('email').hasError('pattern') && mentorForm.get('email').touched">
+        <small style="font-style:italic; color:black">Just use valid email format</small>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="contacts" class="icon-ion"></ion-icon> Gender</ion-label>
+      <ion-select formControlName="gender" required [(ngModel)]="userinfo.gender">
+        <ion-option value=""></ion-option>
+        <ion-option value="Male">Male</ion-option>
+        <ion-option value="Female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('gender').hasError('required') ) && mentorForm.get('gender').touched">
+      <div class="error" *ngIf="mentorForm.get('gender').hasError('required') && mentorForm.get('gender').touched">
+        <small style="font-style:italic; color:black">select gender</small>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="call" class="icon-ion"></ion-icon> Phone</ion-label>
+      <ion-input type="text" [(ngModel)]="userinfo.phone" formControlName="phone" required></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="(mentorForm.get('phone').hasError('minlength') || mentorForm.get('phone').hasError('maxlength') ||mentorForm.get('phone').hasError('pattern') ||mentorForm.get('phone').hasError('required') ) && mentorForm.get('phone').touched">
+      <div class="error" *ngIf="mentorForm.get('phone').hasError('required') && mentorForm.get('phone').touched">
+        <small style="font-style:italic; color:black">Please input your last name</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('phone').hasError('minlength') && mentorForm.get('phone').touched">
+        <small style="font-style:italic; color:black">Minimum 11 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('phone').hasError('maxlength') && mentorForm.get('phone').touched">
+        <small style="font-style:italic; color:black">Maximum 11 characters</small>
+      </div>
+      <div class="error" *ngIf="mentorForm.get('phone').hasError('pattern') && mentorForm.get('phone').touched">
+        <small style="font-style:italic; color:black">Just use numeric characters</small>
+      </div>
+    </ion-item>
+
+
+      <ion-input type="hidden" [(ngModel)]="userinfo.user_type" formControlName="userType"></ion-input>
+    <div padding-left padding-top padding-bottom>
+      <button type="submit" block ion-button color="primary" [disabled]="mentorForm.invalid">Save</button>
+    </div>
+  </form>
+
+</div>
+
+
+  <div class="mentee" *ngIf="userinfo.user_type == 2">
+    <form #f="ngForm" (ngSubmit)="onUpdate(f,userinfo.id)" [formGroup]="menteeForm">
+      <ion-item>
+        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> First name</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.fname" formControlName="fname" required></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('fname').hasError('minlength') || menteeForm.get('fname').hasError('maxlength') ||menteeForm.get('fname').hasError('pattern') ||menteeForm.get('fname').hasError('required') ) && menteeForm.get('fname').touched">
+        <div class="error" *ngIf="menteeForm.get('fname').hasError('required') && menteeForm.get('fname').touched">
+          <small style="font-style:italic; color:black">input your first name</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('fname').hasError('minlength') && menteeForm.get('fname').touched">
+          <small style="font-style:italic; color:black">Minimum 4 characters</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('fname').hasError('maxlength') && menteeForm.get('fname').touched">
+          <small style="font-style:italic; color:black">Maximum 12 characters</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('fname').hasError('pattern') && menteeForm.get('fname').touched">
+          <small style="font-style:italic; color:black">Just use alphabet characters</small>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Last name</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.lname" formControlName="lname" required></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('lname').hasError('minlength') || menteeForm.get('lname').hasError('maxlength') ||menteeForm.get('lname').hasError('pattern') ||menteeForm.get('lname').hasError('required') ) && menteeForm.get('lname').touched">
+        <div class="error" *ngIf="menteeForm.get('lname').hasError('required') && menteeForm.get('lname').touched">
+          <small style="font-style:italic; color:black">input your last name</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('lname').hasError('minlength') && menteeForm.get('lname').touched">
+          <small style="font-style:italic; color:black">Minimum 4 characters</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('lname').hasError('maxlength') && menteeForm.get('lname').touched">
+          <small style="font-style:italic; color:black">Maximum 12 characters</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('lname').hasError('pattern') && menteeForm.get('lname').touched">
+          <small style="font-style:italic; color:black">Just use alphabet characters</small>
+        </div>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating><ion-icon name="key" class="icon-ion"></ion-icon> Password</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.cpassword" formControlName="password" required></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('password').hasError('minlength') || menteeForm.get('password').hasError('maxlength') ||menteeForm.get('password').hasError('pattern') ||menteeForm.get('password').hasError('required') ) && menteeForm.get('password').touched">
+        <div class="error" *ngIf="menteeForm.get('password').hasError('required') && menteeForm.get('password').touched">
+          <small style="font-style:italic; color:black">input your password</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('password').hasError('minlength') && menteeForm.get('password').touched">
+          <small style="font-style:italic; color:black">Minimum 6 characters</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('password').hasError('maxlength') && menteeForm.get('password').touched">
+          <small style="font-style:italic; color:black">Maximum 12 characters</small>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="mail" class="icon-ion"></ion-icon> Email</ion-label>
+        <ion-input type="email" [(ngModel)]="userinfo.email" formControlName="email" readonly required></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('email').hasError('pattern') ||menteeForm.get('email').hasError('required') ) && menteeForm.get('email').touched">
+        <div class="error" *ngIf="menteeForm.get('email').hasError('required') && menteeForm.get('email').touched">
+          <small style="font-style:italic; color:black">input your email</small>
+        </div>
+        <div class="error" *ngIf="menteeForm.get('email').hasError('pattern') && menteeForm.get('email').touched">
+          <small style="font-style:italic; color:black">Just use valid email format</small>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="contacts" class="icon-ion"></ion-icon> Gender</ion-label>
+        <ion-select formControlName="gender" required [(ngModel)]="userinfo.gender">
+          <ion-option value=""></ion-option>
+          <ion-option value="Male">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('gender').hasError('required') ) && menteeForm.get('gender').touched">
+        <div class="error" *ngIf="menteeForm.get('gender').hasError('required') && menteeForm.get('gender').touched">
+          <small style="font-style:italic; color:black">select gender</small>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="call" class="icon-ion"></ion-icon> Phone</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.phone" formControlName="phone" required></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="(menteeForm.get('phone').hasError('minlength') || menteeForm.get('phone').hasError('maxlength') ||menteeForm.get('phone').hasError('pattern') ||menteeForm.get('phone').hasError('required') ) && menteeForm.get('phone').touched">
+        <div *ngIf="menteeForm.get('phone').hasError('required') && menteeForm.get('phone').touched">
+          <small style="font-style:italic; color:black">input your phone</small>
+        </div>
+        <div *ngIf="menteeForm.get('phone').hasError('minlength') && menteeForm.get('phone').touched">
+          <small style="font-style:italic; color:black">Minimum 11 characters</small>
+        </div>
+        <div *ngIf="menteeForm.get('phone').hasError('maxlength') && menteeForm.get('phone').touched">
+          <small style="font-style:italic; color:black">Maximum 11 characters</small>
+        </div>
+        <div *ngIf="menteeForm.get('phone').hasError('pattern') && menteeForm.get('phone').touched">
+          <small style="font-style:italic; color:black">Just use numeric characters</small>
+        </div>
+      </ion-item>
+
+      <ion-input type="hidden" formControlName="userType" [(ngModel)]="userinfo.user_type"></ion-input>
+      <div padding-left padding-top padding-bottom>
+        <button type="submit" ion-button block  color="primary" [disabled]="menteeForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="mentee" *ngIf="userinfo.user_type == 3">
+    <form #f="ngForm" (ngSubmit)="onUpdate(f,userinfo.id)">
+      <ion-item>
+        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> First name</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.fname" name="fname" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="person" class="icon-ion"></ion-icon> Last name</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.lname" name="lname" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="key" class="icon-ion"></ion-icon> Password</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.cpassword" name="password" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="mail" readonly class="icon-ion"></ion-icon> Email</ion-label>
+        <ion-input type="email" [(ngModel)]="userinfo.email" name="email" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="contacts" class="icon-ion"></ion-icon> Gender</ion-label>
+        <ion-select name="gender" required [(ngModel)]="userinfo.gender">
+          <ion-option value=""></ion-option>
+          <ion-option value="Male">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="body" class="icon-ion"></ion-icon> Career Field</ion-label>
+        <ion-select name="careerfield" required [(ngModel)]="userinfo.careerfield">
+          <ion-option value=""></ion-option>
+          <ion-option value="Engineering">Engineering</ion-option>
+          <ion-option value="Law">Law</ion-option>
+          <ion-option value="Medicine">Medicine</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating><ion-icon name="call" class="icon-ion"></ion-icon> Phone</ion-label>
+        <ion-input type="text" [(ngModel)]="userinfo.phone" name="phone" required></ion-input>
+      </ion-item>
+      <ion-input type="hidden" name="userType" [(ngModel)]="userinfo.user_type"></ion-input>
+      <div padding-left padding-top padding-bottom>
+        <button type="submit" ion-button block  color="primary" [disabled]="!f.valid">Save</button>
+      </div>
+    </form>
+  </div>
+  </div>
+</ion-content>

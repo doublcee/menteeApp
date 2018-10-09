@@ -1,0 +1,83 @@
+page-report {
+  .footer{
+    background:#81007F;
+    color:#fff !important;
+    font-weight:bold;
+    font-style:italic;
+  }
+
+  ion-label{
+    color:#81007F !important;
+    font-weight:500 !important;
+  }
+  .footer{
+    background:#81007F !important;
+    color:#fff !important;
+    font-weight:bold;
+    font-style:italic;
+  }
+
+  input::placeholder {
+    color: #2f2f2f !important;
+    opacity: 0.5;
+  }
+
+  ion-input[type=text]{
+    color: #2f2f2f !important;
+  }
+
+  ion-textarea{
+    color: #2f2f2f;
+  }
+
+ /* .rhalf1{
+
+    height:20% !important;;
+    top:0 !important;
+    margin:0 !important;
+  }
+
+  .itemion{
+    background: #a9a9a9 !important;
+    color:#fff !important;
+  }
+
+  input::placeholder {
+    color: #e0e0e0 !important;
+    font-size: 1em;
+    opacity: 0.9
+  }
+
+  textarea::placeholder{
+    color: #e0e0e0 !important;
+  }
+
+  ion-textarea{
+    color:#e0e0e0 !important;
+  }
+
+  ion-option{
+    color:#fff !important
+  }
+
+  ion-label{
+    color: #e0e0e0 !important;
+    font-size: 1em;
+    font-weight:bold;
+  }
+  ion-input[type=text]{
+    color:#e0e0e0;
+    font-weight: 400;
+  }
+
+  ion-select{
+    color: #e0e0e0;
+    font-weight:bold;
+    font-size: 1em;
+  }
+
+  .select-icon-inner{
+    color:#fff !important;
+  }
+*/
+}

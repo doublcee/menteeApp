@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button (click)="onClose()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Request Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <ion-item text-center>
+    <img src="assets/imgs/index2.jpeg" height="100px" width="100px" style="border-radius: 20px" *ngIf="details.user.photo == 'N/A'">
+    <img src="{{imageUrl}}{{details.user.photo}}" height="100px" width="100px" style="border-radius: 20px" *ngIf="details.user.photo !== 'N/A'">
+  </ion-item>
+  <ion-item no-lines>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-sm-4>
+          <p style="font-weight:bold">Full Name:</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ details.user.fname }} {{ details.user.lname }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-4>
+          <p style="font-weight:bold">Username:</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ details.user.username }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p style="font-weight:bold">Email:</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ details.user.email }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-4>
+          <p style="font-weight:bold">Phone:</p>
+        </ion-col>
+        <ion-col col-md-8>
+          <p>{{ details.user.phone }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-4>
+          <p style="font-weight:bold">Gender:</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ details.user.gender }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-sm-4>
+          <p style="font-weight:bold">Role</p>
+        </ion-col>
+        <ion-col>
+          <p>Mentee</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+
+  <ion-item-divider>Goal Details</ion-item-divider>
+  <div padding-top padding-bottom>
+    <ion-row>
+      <ion-col col-5 style="color:#5b5b5b; font-weight:bold">Description:</ion-col>
+      <ion-col col-7 style='color:#5b5b5b'>
+        {{details.goalDesc}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>
+        <span style='color:#5b5b5b; font-weight:bold'>Duration:</span>
+      </ion-col>
+      <ion-col col-7 style='color:#5b5b5b'>
+        {{ details.gStartDate}} to {{ details.gEndDate}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>
+        <span style='color:#5b5b5b; font-weight:bold'>Completed:</span>
+      </ion-col>
+      <ion-col col-7 style='color:#5b5b5b'>
+        {{ details.dateCompleted }}
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

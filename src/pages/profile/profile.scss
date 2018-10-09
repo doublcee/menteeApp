@@ -1,0 +1,38 @@
+page-profile {
+ .profile{
+   background:white;
+   color: blue!important;
+   font-weight:bold;
+ }
+
+  .details{
+    font-weight:bold;
+    font-size: 16px;
+  }
+
+  .myrow{
+    padding: 5px 0 !important;
+    color: #525252 !important;
+  }
+
+  .rowcolor{
+    color: #525252 !important;
+  }
+
+  .footer{
+    background:#81007F;
+    color:#fff !important;
+    font-weight:bold;
+    font-style:italic;
+    //padding:5px !important;
+  }
+
+
+  .toolbar{
+    background: inherit !important;
+  }
+
+.imageUser{
+  border-radius:100% !important;
+}
+}

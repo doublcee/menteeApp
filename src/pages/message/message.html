@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>{{ user.user_type == 1 ? 'Mentor' : user.fname+" "+user.lname}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content text-center class="body">
+        <div style="width:100%; height:auto">
+                <div class="sender"  *ngIf="message.msg_from == userID">
+                    <div class="message">
+                        <span style="font-weight:bold">{{message.msg_body}}</span> <br/><br/> <small style="font-weight:bold">{{ message.created_at}}</small>
+                    </div>
+                </div>
+                <div class="receiver" *ngIf="message.msg_to == userID">
+                    <div class="message">
+                        <span style="font-weight:bold">{{message.msg_body}}</span> <br/><br/> <small style="font-weight:bold">{{ message.created_at}}</small>
+                    </div></div>
+    </div>
+</ion-content>
+
+<ion-footer text-center class="footer">
+    Pursuit Of Purpose Network
+</ion-footer>

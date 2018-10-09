@@ -1,0 +1,64 @@
+<ion-header class="myheader">
+    <ion-navbar color="alternate">
+    <ion-title>Community</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="container">
+            <div *ngIf="usertype == 2">
+                <div class="holder" padding-top text-center style="font-style:italic;font-weight:bold; color:#5b5b5b" *ngIf="reqStatus == 1" no-lines>You cannot join community at this moment, <br/>please request a mentor.</div>
+                <div class="holder" padding-top text-center style="font-style:italic;font-weight:bold;  color:#5b5b5b" *ngIf="reqStatus == 2">You have a pending mentor request, <br/>cannot join community at this moment.</div>
+                <div *ngIf="messages && reqStatus == 3" class="holder">
+                        <div *ngFor="let message of messages" class="{{ message.comMsgBy == myID ? 'sender' : 'receiver'}}">
+                            <div class="message">
+                                <span style="font-weight:bold">{{ message.comMsgBody }}</span><br/>
+                                <span><small>{{message.comMsgBy == myID ? message.comMsgDate : message.user.user_type == 1 ? 'Mentor | ' + message.comMsgDate : message.user.fname+' '+message.user.lname+' | '+message.comMsgDate }} <ion-icon name="checkmark" *ngIf="message.comMsgBy == myID"></ion-icon> </small></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div *ngIf="usertype == 1">
+                <div *ngIf="messages" class="holder">
+                    <div *ngFor="let message of messages" class="{{ message.comMsgBy == myID ? 'sender' : 'receiver'}}">
+                        <div class="message">
+                            <span style="font-weight:bold">{{ message.comMsgBody }} </span><br/>
+                            <span><small>{{message.comMsgBy == myID ? message.comMsgDate : message.user.fname+' '+message.user.lname+' | '+message.comMsgDate }}  <ion-icon name="checkmark" *ngIf="message.comMsgBy == myID"></ion-icon> </small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</ion-content>
+<ion-footer style="position:fixed" class="footer" text-left  *ngIf="usertype == 2">
+       <div class="holder" text-center padding style="font-style:italic;" *ngIf="reqStatus == 1 || reqStatus == 2">
+           Pursuit Of Purpose Network
+       </div>
+        <form #f="ngForm" (ngSubmit)="addMessage(f)" *ngIf="reqStatus == 3">
+            <ion-row>
+                <ion-col col-10>
+                    <ion-input type="text" name="msgBody" ngModel placeholder="your message" required></ion-input>
+                </ion-col>
+                <ion-col col-2>
+                    <button ion-button color="primary" icon-only block [disabled]="!f.valid">
+                        <ion-icon name="send"></ion-icon></button>
+                </ion-col>
+            </ion-row>
+        </form>
+</ion-footer>
+
+<ion-footer style="position:fixed" class="footer" text-left *ngIf="usertype == 1">
+    <form #f="ngForm" (ngSubmit)="addMessage(f)">
+        <ion-row>
+            <ion-col col-10>
+                <ion-input type="text" name="msgBody" ngModel placeholder="your message" required></ion-input>
+            </ion-col>
+            <ion-col col-2>
+                <button ion-button color="primary" icon-only block [disabled]="!f.valid">
+                    <ion-icon name="send"></ion-icon></button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-footer>
+
+
+
+
+

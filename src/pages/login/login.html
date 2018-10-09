@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+       <button ion-button (click)="onSignup()">SIGNUP</button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homepage">
+  <div class="career">
+   <div class="fdiv">
+    </div>
+    <div class="ldiv" padding-right>
+      <form #f="ngForm" (ngSubmit)="signin(f)">
+        <ion-item>
+          <ion-label stacked><ion-icon name="mail" class="icon-ion"></ion-icon> Email</ion-label>
+          <ion-input type="text" name="email" ngModel required placeholder=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked><ion-icon name="key" class="icon-ion"></ion-icon> Password</ion-label>
+          <ion-input type="password" name="password" ngModel placeholder="" required></ion-input>
+        </ion-item>
+        <div padding-left padding-top padding-bottom>
+          <button type="submit" ion-button block  color="primary" [disabled]="!f.valid">Sign In</button>
+        </div>
+      </form>
+        <div text-center><button ion-button clear small style="color:#fff" [navPush]="fpasswordPage">forgot password</button></div>
+    </div>
+  </div>
+
+</ion-content>

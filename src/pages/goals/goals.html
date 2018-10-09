@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Goals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="Goals && Goals.length == 0" text-center padding style="font-style:italic;font-weight:bold; color:#5b5b5b">
+     No Goals available! Add a goal.
+  </div>
+  <div *ngIf="Goals && Goals.length !== 0">
+    <ion-grid>
+      <ion-row  style="border-bottom: solid; color:#E91E63;font-weight:bold;">
+        <ion-col col-6>
+          Goal
+        </ion-col>
+        <ion-col col-6>
+          Duration
+        </ion-col>
+      </ion-row>
+
+      <ion-row  style="border-bottom: solid; color:#5b5b5b" *ngFor="let goal of Goals">
+        <ion-col col-6>
+          {{ goal.goalDesc }}
+        </ion-col>
+        <ion-col col-6>
+          {{ goal.gStartDate}} to {{ goal.gEndDate}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-fab bottom right>
+    <button ion-fab mini color="fab"  [navPush]="addGoal"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

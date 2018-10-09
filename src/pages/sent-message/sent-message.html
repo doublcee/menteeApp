@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Sent Messages</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="messages">
+    <div text-center padding style="font-weight:bold; color:#5b5b5b" *ngIf="messages.length == 0">
+      No sent messages
+    </div>
+    <ion-item-divider style="color:#81007F; font-weight:bold" *ngIf="messages.length > 0">
+      {{ messages.length }} Sent {{ messages.length <= 1 ? 'Message' : 'Messages'}}
+    </ion-item-divider>
+  </div>
+
+  <div *ngIf="userType == 1">
+    <div *ngIf="messages">
+      <ion-list>
+        <ion-item-sliding  *ngFor="let message of messages; let i = index" #itemSliding>
+          <button ion-item style="background:inherit !important" (click)="gotoMessage(message,message.sentmsgs)">
+            <ion-icon name="mail" item-left style="color:#81007F"></ion-icon>
+            <h2 style="color:#81007F; padding-top:3px">{{ message.sentmsgs.fname }} {{ message.sentmsgs.lname }}</h2>
+            <p> {{ message.msg_body }} </p>
+            <p>{{ message.created_at }}</p>
+          </button>
+          <ion-item-options>
+            <button ion-button color="alternate" icon-left (click)="deleteMsg(message.msg_id, i, 2, itemSliding)"><ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+  <div *ngIf="userType == 2">
+    <div *ngIf="messages">
+      <ion-list>
+        <ion-item-sliding  *ngFor="let message of messages; let i = index" #itemSliding>
+          <button ion-item style="background:inherit !important" (click)="gotoMessage(message,message.sentmsgs)">
+            <ion-icon name="mail" item-left style="color:#81007F"></ion-icon>
+            <h2 style="color:#81007F; padding-top:3px">{{ message.sentmsgs.user_type == 1 ? 'Mentor' : message.sentmsgs.fname+" "+message.sentmsgs.lname}}</h2>
+            <p> {{ message.msg_body }} </p>
+            <p>{{ message.created_at }}</p>
+          </button>
+          <ion-item-options>
+            <button ion-button color="alternate" icon-left (click)="deleteMsg(message.msg_id, i, 2, itemSliding)"><ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

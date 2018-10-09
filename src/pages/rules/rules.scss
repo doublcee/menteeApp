@@ -1,0 +1,27 @@
+page-rules {
+  .bodyspan{
+    font: 15px/1.5 Arial, helvetica,sans-serif;
+    padding:0;
+    margin:0;
+  }
+  .footer{
+    background:#81007F !important;
+    color:#fff !important;
+    font-weight:bold;
+    font-style:italic;
+  }
+
+  ol > li{
+    padding-bottom:5px !important;
+
+  }
+
+  ol{
+    padding-left:13px !important;
+  }
+
+  ion-content{
+    background: #fff !important;
+  }
+
+}

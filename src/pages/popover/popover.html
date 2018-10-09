@@ -1,0 +1,53 @@
+<ion-grid text-center *ngIf="ismentee">
+  <ion-row>
+    <ion-col>
+      <button block ion-item outline style="color:#81007F" (click)="messageMentee(user)" icon-left><ion-icon name="mail" style="color:#81007F"></ion-icon> send message</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-item outline style="color:#81007F" (click)="reportMentee(user)" icon-left><ion-icon name="create" style="color:#81007F"></ion-icon> report</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+  <ion-col>
+    <button ion-item outline style="color:#81007F" (click)="close()" icon-left><ion-icon name="close" style="color:#81007F"></ion-icon> close</button>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid textcenter *ngIf="ismentor">
+  <ion-row>
+    <ion-col>
+      <button block ion-item outline style="color:#81007F" (click)="onmessageMentor(user)" icon-left><ion-icon name="mail" style="color:#81007F"></ion-icon>send message</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-item outline style="color:#81007F" (click)="reportMentor(user)" icon-left><ion-icon name="create" style="color:#81007F"></ion-icon> report</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-item outline style="color:#81007F" icon-left (click)="close()" ><ion-icon name="close" style="color:#81007F"></ion-icon> close</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid textcenter *ngIf="iscomentee">
+  <ion-row>
+    <ion-col>
+      <button block ion-item outline style="color:#81007F" (click)="messagecoMentee(user)" icon-left><ion-icon name="mail" style="color:#81007F"></ion-icon>send message</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-item outline style="color:#81007F" (click)="reportcoMentee(user)" icon-left><ion-icon name="create" style="color:#81007F"></ion-icon> report</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-item outline style="color:#81007F" icon-left (click)="close()" ><ion-icon name="close" style="color:#81007F"></ion-icon> close</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

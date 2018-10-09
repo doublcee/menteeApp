@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Mentees Request</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="mentees" padding>
+    <ion-item-divider *ngIf="mentees.length == 0" text-center style="color:#525252; font-weight:bold">No mentee join request at the moment.</ion-item-divider>
+    <ion-item-divider *ngIf="mentees.length !== 0" style="color:#525252; font-weight:bold">{{mentees.length}} pending {{mentees.length == 1 ? 'request' : 'requests' }}</ion-item-divider>
+  </div>
+  <div *ngIf="mentees" padding-left padding-right>
+    <ion-list>
+      <ion-item-sliding *ngFor="let mentee of mentees; let i = index" #itemSliding>
+        <button ion-item style="background:inherit !important" (click)="onMentee(mentee)">
+          <div item-left  *ngIf="mentee.photo == 'N/A'"><img src="assets/imgs/index2.jpeg" height="=70px" width="70px"></div>
+          <div item-left *ngIf="mentee.photo !== 'N/A'"><img src="{{imageUrl}}{{mentee.photo}}" height="70px" width="70px"></div>
+          <h2 style="padding-top:3px; color:#81007F">{{mentee.fname}} {{mentee.lname}}</h2>
+          <p>{{ mentee.email }}</p>
+          <p>{{ mentee.phone }}</p>
+        </button>
+        <ion-item-options>
+          <button ion-button color="save" icon-left (click)="onApprove(mentee.id,i,itemSliding,mentee.fname+' '+mentee.lname)"><ion-icon name="checkbox"></ion-icon> approve</button>
+          <button ion-button color="trash" icon-left (click)="onDelete(mentee.id,i,itemSliding,mentee.fname+' '+mentee.lname)"><ion-icon name="trash"></ion-icon>delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+</ion-content>
+<ion-footer class="footer" text-center>
+  Pursuit Of Purpose Network
+</ion-footer>

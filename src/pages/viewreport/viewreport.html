@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Report</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="report && report.length !== 0">
+    <div padding-top padding-left padding-right >
+      <ion-grid>
+        <ion-row>
+          <ion-col> <span style="font-weight:bold"><u>Report</u></span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ report.repBody}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div padding-left padding-right>
+      <ion-grid>
+        <ion-row>
+          <ion-col> <span style="font-weight:bold"><u>Reason for report</u></span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ report.reason }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div padding-left padding-right>
+      <ion-grid>
+        <ion-row>
+          <ion-col> <span style="font-weight:bold"><u>Reporter</u></span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Name: {{ reporter.fname }} {{ reporter.lname }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>email: {{ reporter.email }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Role: {{ reporter.user_type == 1 ? 'Mentor' : 'Mentee'}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div padding-left padding-right>
+      <ion-grid>
+        <ion-row>
+          <ion-col> <span style="font-weight:bold"><u>Reported</u></span></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Name: {{ reportee.fname }} {{ reportee.lname }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>email: {{ reportee.email }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Role: {{ reportee.user_type == 1 ? 'Mentor' : 'Mentee'}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+</ion-content>
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-title>Schedules</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="body">
+  <div text-center *ngIf="Goals" text-lg-center>
+    <ion-item-divider text-left *ngIf="Goals.length !== 0" style="font-weight:bold; color:#5b5b5b">My Goal Schedules</ion-item-divider>
+    <div text-center padding style="font-style:italic;font-weight:bold; color:#5b5b5b" *ngIf="Goals.length == 0">No Schedule At the moment!</div>
+  </div>
+  <div *ngIf="Goals">
+    <ion-card *ngFor="let goal of Goals; let i = index" padding>
+      <ion-card-title style="font-weight:bold" padding text-center> <h2 style="pading:0px !important;">{{goal.goalDesc}}</h2></ion-card-title>
+      <ion-card-content text-center>
+        <p>Start Date: {{goal.gStartDate}}</p>
+        <p>Finish Date: {{ goal.gEndDate}}</p>
+          <ion-row>
+            <ion-col col-6><button ion-button small color="secondary" (click)="onComplete(goal.goal_id,i,userID)">Completed</button></ion-col>
+            <ion-col col-6><button ion-button small (click)="onNotComplete(goal.goal_id,i,userID)">Not Complete</button></ion-col>
+          </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer text-center class="footer">
+  Pursuit Of Purpose Network
+</ion-footer>

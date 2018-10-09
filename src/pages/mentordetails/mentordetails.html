@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button (click)="onclose()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Mentor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item text-capitalize  style="color:#81007F; font-weight:bold" text-center>
+      <img alt="my photo" src="assets/imgs/index2.jpeg" width="100px" height="100px" *ngIf="mentordata.photo == 'N/A'">
+      <img (click)="onView(mentordata.photo)" alt="my photo" src="{{imageUrl}}{{mentordata.photo}}" width="100px" height="100px" *ngIf="mentordata.photo !== 'N/A'">
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-md-4 col-sm-4>
+            <p><span style="font-weight:bold">Name:</span>
+            </p>
+          </ion-col>
+          <ion-col col-md-8 col-sm-8>
+            <p>{{ mentordata.title }} {{ mentordata.fname }} {{ mentordata.lname }}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-md-4>
+            <p><span style="font-weight:bold">Email:</span>
+          </ion-col>
+          <ion-col col-md-8>
+            <p>{{mentordata.email}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-md-4>
+            <p><span style="font-weight:bold">Ca:</span>
+          </ion-col>
+          <ion-col col-md-8>
+            <p>{{mentordata.careerfield}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-md-4>
+            <p><span style="font-weight:bold">Gender:</span>
+          </ion-col>
+          <ion-col col-md-8>
+            <p>{{mentordata.gender}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+     <ion-grid>
+      <ion-row padding-left>
+        <ion-col style="color:#646464; font-weight:bold" col-md-12>
+          Goal:
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

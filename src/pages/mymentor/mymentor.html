@@ -1,0 +1,86 @@
+
+<ion-header>
+  <ion-navbar color="alternate">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event, 'mentor', mentordata)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Mentor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="mentordata && mentordata.length !== 0">
+    <ion-item text-center>
+      <img src="assets/imgs/index2.jpeg" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentordata.photo == 'N/A'">
+      <img (click)="onView(mentordata.photo)" src="{{imageUrl}}{{mentordata.photo}}" alt="my photo" height="100px" width="100px" style="border-radius: 20px" *ngIf="mentordata.photo !== 'N/A'">
+    </ion-item>
+      <ion-grid padding-left>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Title:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.title }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Name:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.fname }} {{ mentordata.lname }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Email:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.email }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Phone:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.phone }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Gender:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.gender }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow">
+          <ion-col col-6>
+            <span style="font-weight:bold">Career:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>{{ mentordata.careerfield }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="myrow" *ngIf="mentordata.bann == 1">
+          <ion-col col-6>
+            <span style="font-weight:bold">Status:</span>
+          </ion-col>
+          <ion-col col-6>
+            <span>Suspended</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+  <div>
+    <ion-fab bottom right>
+      <button ion-fab mini color="fab" (click)="onmessageMentor(mentordata)"><ion-icon name="mail"></ion-icon></button>
+    </ion-fab>
+  </div>
+</ion-content>
+<ion-footer class="footer" text-center>
+  Pursuit Of Purpose Network
+</ion-footer>
